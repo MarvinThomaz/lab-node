@@ -5,7 +5,9 @@ exports.MongoDataProvider = class MongoDataProvider {
     constructor() {};
 
     insert(entity) {
-        client
+        this.connect(function(db){
+
+        })
     }
 
     update(key, entity) {
@@ -26,5 +28,12 @@ exports.MongoDataProvider = class MongoDataProvider {
 
     getByFilter(filter) {
 
+    }
+
+    connect(callback) {
+        var url = "mongodb://localhost:27017/Users";
+        client.connect(url, function(crr, db) {
+            callback(db);
+        });
     }
 }
